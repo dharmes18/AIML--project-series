@@ -1,0 +1,17 @@
+import random
+
+from typing import Any, Text, Dict, List from rasa_sdk import Action, Tracker from rasa_sdk.executor import CollectingDispatcher
+
+class ActionAskProcedure(Action): def name(self) -> Text: return "action_ask_procedure"
+
+def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]: program = tracker.get_slot('program') response = f"The admission procedure for {program} is to fill out the online application form, submit transcripts, and provide recommendation letters." dispatcher.utter_message(text=response) return [] class ActionAskRequirements(Action): def name(self) -> Text: return "action_ask_requirements"
+
+def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]: program = tracker.get_slot('program') response = f"The requirements for {program} include a high school diploma, SAT/ACT scores, and personal essays." dispatcher.utter_message(text=response) return [] class ActionAskDeadlines(Action): def name(self) -> Text: return "action_ask_deadlines"
+
+def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]: program = tracker.get_slot('program') response = f"The application deadline for {program} is December 1st." dispatcher.utter_message(text=response) return [] class ActionAskScholarships(Action): def name(self) -> Text: return "action_ask_scholarships"
+
+def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]: program = tracker.get_slot('program') response = f"There are several scholarships available for {program}, including merit-based and need-based scholarships." dispatcher.utter_message(text=response) return [] class ActionAskTuition(Action): def name(self) -> Text: return "action_ask_tuition"
+
+def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]: program = tracker.get_slot('program') response = f"The tuition fee for {program} is $20,000 per year." dispatcher.utter_message(text=response) return [] class ActionAskContact(Action): def name(self) -> Text: return "action_ask_contact"
+
+def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]: response = "You can contact the admission office at admissions@college.edu or call (123) 456-7890." dispatcher.utter_message(text=response) return []
